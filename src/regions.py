@@ -62,5 +62,5 @@ def cio_region():
     return x
 
 def afc_region():
-    x = Region(name='AFC', lat_south=-10, lat_north=10, lon_west=-30, lon_east=60)
+    x = Region(name='AFC', lat_south=-10, lat_north=10, lon_west=15, lon_east=35)
     return x
