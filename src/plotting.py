@@ -16,11 +16,11 @@ def load_era5_pcs(region):
     file = f'{project_root_dir()}/data/{region}.massflux_PCs.nc'
     return xr.open_dataarray(file)
 
-def load_pf_crh(region, radius=5):
+def load_pf_crh(region, radius=2):
      file = f'{project_root_dir()}/data/{region}.tropical_pf_crh_data_{radius}deg.csv'
      return pd.read_csv(file)
 
-def load_pf_pc(region, radius=5):
+def load_pf_pc(region, radius=2):
      file = f'{project_root_dir()}/data/{region}.tropical_pf_pc_data_{radius}deg.csv'
      return pd.read_csv(file)
 
