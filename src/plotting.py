@@ -3,6 +3,9 @@ import xarray as xr
 import numpy as np
 from src.configs import *
 
+def array_midpoints(x):
+    return (x[1:] + x[:-1])/2
+
 def load_pf_stats(region):
     file = merged_pf_stats_file(region)
     df = pd.read_csv(file, index_col=0)
@@ -16,7 +19,7 @@ def load_era5_pcs(region):
     file = f'{project_root_dir()}/data/{region}.massflux_PCs.nc'
     return xr.open_dataarray(file)
 
-def load_pf_crh(region, radius=2):
+def load_pf_crh(region, radius=1):
      file = f'{project_root_dir()}/data/{region}.tropical_pf_crh_data_{radius}deg.csv'
      return pd.read_csv(file)
 
