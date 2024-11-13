@@ -1,6 +1,7 @@
 class Region:
-    def __init__(self, name, lat_south, lat_north, lon_west, lon_east):
+    def __init__(self, name, long_name, lat_south, lat_north, lon_west, lon_east):
         self._name = name
+        self._long_name = long_name
         self._lat_south = lat_south
         self._lat_north = lat_north
         self._lon_west = lon_west
@@ -13,6 +14,14 @@ class Region:
     @name.setter
     def name(self, value):
         self._name = value
+
+    @property
+    def long_name(self):
+        return self._long_name
+
+    @long_name.setter
+    def long_name(self, value):
+        self._long_name = value
 
     @property
     def lat_south(self):
@@ -54,13 +63,13 @@ class Region:
         }
 
 def wmp_region():
-    x = Region(name='WMP', lat_south=-10, lat_north=10, lon_west=105, lon_east=178)
+    x = Region(name='WMP', long_name='Warm Pool', lat_south=-40, lat_north=20, lon_west=140, lon_east=178)
     return x
 
 def cio_region():
-    x = Region(name='CIO', lat_south=-10, lat_north=10, lon_west=55, lon_east=105)
+    x = Region(name='CIO', long_name='Central Indian Oceaan', lat_south=-40, lat_north=40, lon_west=61, lon_east=145)
     return x
 
 def afc_region():
-    x = Region(name='AFC', lat_south=-10, lat_north=10, lon_west=15, lon_east=35)
+    x = Region(name='AFC', long_name='Africa', lat_south=-40, lat_north=40, lon_west=-30, lon_east=60)
     return x
