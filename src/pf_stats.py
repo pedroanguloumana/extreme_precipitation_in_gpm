@@ -12,3 +12,7 @@ def load_pf_stats(region, trim_region=False):
         region_mask = region_mask & (df['mean_longitude']>=region.lon_west)
         df = df[region_mask]
     return df
+
+def load_pf_crh(region):
+    file = f'/Users/pedro/extreme_precipitation_in_gpm/data/{region.name}.crh_2deg.csv'
+    return pd.read_csv(file, index_col=False)
