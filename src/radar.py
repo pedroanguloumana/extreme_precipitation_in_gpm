@@ -8,15 +8,16 @@ def get_radar_files(region):
     files = sorted(glob(path))
     return files
 
-def load_merged_radar(region, trim_region=True, maxpr_min=0):
-    radar_files = [f for f in get_radar_files(region)]
-    radar = xr.open_mfdataset(
-        radar_files, 
-        chunks='auto', 
-        concat_dim='features', 
-        combine='nested'
-    )
+def get_feb_radar_files(region):
+    path = f'/Users/pedro/extreme_precipitation_in_gpm/data/precipitation_feature_database/{region.name}/gpm_pf_radar_profiles.{region.name}*02.nc'
+    files = sorted(glob(path))
+    return files
 
+def load_merged_radar(region, trim_region=True, maxpr_min=0):
+    file = f'/Users/pedro/extreme_precipitation_in_gpm/data/precipitation_feature_database/merged/merged.gpm_pf_radar.{region.name}.nc'
+
+    radar = xr.open_dataset(file)
+    
     if trim_region:
         file = f'/Users/pedro/extreme_precipitation_in_gpm/data/precipitation_feature_database/merged/merged.gpm_pf_stats.{region.name}.csv'
         df = pd.read_csv(file, index_col=False) 
