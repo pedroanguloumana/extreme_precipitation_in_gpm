@@ -27,9 +27,9 @@ def load_merged_radar(region, trim_region=True, maxpr_min=0):
         region_mask = region_mask & (df['mean_latitude']>=region.lat_south)
         region_mask = region_mask & (df['mean_longitude']<=region.lon_east)
         region_mask = region_mask & (df['mean_longitude']>=region.lon_west)
+        region_mask = region_mask & (df['max_precip']>maxpr_min)
 
         # only get features
         radar = radar.isel(features=np.where(region_mask)[0])
-
         
     return radar
