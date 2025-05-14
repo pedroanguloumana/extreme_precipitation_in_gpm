@@ -3,7 +3,7 @@ import xarray as xr
 from src.regions import Region
 
 def load_pf_stats(region, trim_region=True, just_tropics=True, maxpr_min=0):
-    file = f'/Users/pedro/extreme_precipitation_in_gpm/data/precipitation_feature_database/merged/merged.gpm_pf_stats.{region.name}.csv'
+    file = f'/Users/pedro/extreme_precipitation_in_gpm/data/precipitation_feature_database/merged/merged.{region.name}.csv'
     df = pd.read_csv(file, index_col=False)
     if trim_region:
         # select the region
@@ -44,6 +44,7 @@ def load_feb_pf_stats(region, trim_region=True, just_tropics=True, maxpr_min=0):
 def load_global_pf_stats():
     file = '/Users/pedro/extreme_precipitation_in_gpm/data/precipitation_feature_database/merged/merged_global.gpm_pf_stats.csv'
     pf_stats = pd.read_csv(file)
+    pf_stats = pf_stats[abs(pf_stats['mean_latitude']) <=20]
     return pf_stats
 
 def load_mc_exps_tcwv():
